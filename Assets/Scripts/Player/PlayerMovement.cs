@@ -1,68 +1,61 @@
 using UnityEngine;
-using System.Collections;
 using System;
+using UnityEngine.SceneManagement;
+using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rigidBody;
     private Player player;
 
-    [SerializeField] private float horizontalMovementspeed = 2;
-    [SerializeField] private float verticalMovementSpeed = 1;
-    [SerializeField] private int verticalMovement = 0;
-    public static bool isStay = true;
+    [SerializeField] private float movementSpeed = 1;
+    public static float addMovementSpeed = 0;
+    [SerializeField] private Vector3 dir = new Vector3(0, 0, 0);
+    public static bool isStay = false;
 
-    private Coroutine coroutine;
     public static Action onStaminaEnd;
+
+    private Vector3 startPos;
+
+
     private void Start()
     {
-        isStay = true;
-        UIManager.onChangedVerMovement += VerMovementChange;
-        UIManager.onMoveStart += StartMove;
-        UIManager.onMoveStop += StopMove;
+        startPos = transform.position;
+        isStay = false;
+        UIManager.onChangedVerDir += VerMovementChange;
+        UIManager.onChangedHorDir += HorMovementChange;
         rigidBody = GetComponent<Rigidbody>();
         player = GetComponent<Player>();
     }
-
-    private void StartMove()
+    private void Update()
     {
-        if(coroutine != null)
-            StopCoroutine(coroutine);
-        coroutine = StartCoroutine(Move());
+        if (dir != new Vector3(0, 0, 0) && isStay == false && player.curStamina > 0)
+        {
+            rigidBody.MovePosition(transform.position + dir * movementSpeed);
+            player.curStamina -= 5 * Time.deltaTime;
+        }
+        else
+        {
+            if (player.curStamina < player.maxStamina)
+                player.curStamina += player.staminaRegeneration * Time.deltaTime;
+        }
     }
-    private void StopMove()
+    private void HorMovementChange(int value)
     {
-        if (coroutine != null)
-            StopCoroutine(coroutine);
-        coroutine = StartCoroutine(StaminaRegeneration());
+        dir.x = value;
     }
     private void VerMovementChange(int value)
     {
-        verticalMovement = value;
+        dir.z = -value;
     }
 
-    private IEnumerator Move()
+    private IEnumerator isEnd()
     {
-        yield return new WaitForFixedUpdate();
-        if (player.curStamina > 0)
+        yield return new WaitForSeconds(3);
+        if (Vector3.Distance(transform.position, startPos) > 1000)
         {
-            Vector3 pos = transform.position + new Vector3(horizontalMovementspeed * Time.deltaTime * (isStay?0:1), 0, verticalMovementSpeed * Time.deltaTime * verticalMovement * -1);
-            player.curStamina -= 5 * Time.deltaTime;
-            rigidBody.MovePosition(pos);
-            coroutine = StartCoroutine(Move());
+            player.Fruits();
+            SceneManager.LoadScene(0);
         }
-        else{
-            onStaminaEnd.Invoke();
-        }
-        
     }
 
-    private IEnumerator StaminaRegeneration()
-    {
-        yield return new WaitForFixedUpdate();
-        if (player.curStamina < player.maxStamina)
-        {
-            player.curStamina += 5 * Time.deltaTime;
-            coroutine = StartCoroutine(StaminaRegeneration());
-        }
-    }
 }

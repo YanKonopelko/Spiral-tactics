@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2072601623770311420}
   - component: {fileID: 4262564121186852406}
   - component: {fileID: 7667365957568914203}
+  - component: {fileID: -1341457543514048668}
   m_Layer: 0
   m_Name: "\u043A\u0440\u0430\u0441\u043D\u044B\u0439 \u0444\u0440\u0443\u043A\u0442"
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2316916241367138275}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 64.96622, y: 0.37289137, z: -24.784458}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -96,3 +97,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a15062ca1473f45a1e0b3f999e1e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &-1341457543514048668
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2316916241367138275}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.019999996, z: 0.019999996}
+  m_Center: {x: -4.656613e-10, y: -4.656612e-10, z: 0.0062710843}

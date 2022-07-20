@@ -1,5 +1,3 @@
-using System.Collections;
-using UnityEngine;
 
 public class Wolf : Enemy
 {
@@ -7,5 +5,4 @@ public class Wolf : Enemy
     {
         attackSpeed = 1.5f;
     }
-
 }
