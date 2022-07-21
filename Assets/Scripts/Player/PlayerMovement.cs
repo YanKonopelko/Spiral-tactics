@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector3 dir = new Vector3(0, 0, 0);
     public static bool isStay = false;
 
+    //Событие вызываемое при 0 выносливости
     public static Action onStaminaEnd;
 
     private Vector3 startPos;
@@ -20,11 +21,16 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         startPos = transform.position;
+
         isStay = false;
+
         UIManager.onChangedVerDir += VerMovementChange;
         UIManager.onChangedHorDir += HorMovementChange;
+
         rigidBody = GetComponent<Rigidbody>();
         player = GetComponent<Player>();
+
+        StartCoroutine(isEnd());
     }
     private void Update()
     {
@@ -51,11 +57,14 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator isEnd()
     {
         yield return new WaitForSeconds(3);
+        //Проверка на пройденное расстояние
         if (Vector3.Distance(transform.position, startPos) > 1000)
         {
+            //Сохранение прогресса и вход в меню
             player.Fruits();
             SceneManager.LoadScene(0);
         }
+        StartCoroutine(isEnd());
     }
 
 }

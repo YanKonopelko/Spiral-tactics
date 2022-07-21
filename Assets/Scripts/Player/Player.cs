@@ -42,7 +42,7 @@ public class Player : Creature
 
 
     private void  Start() {
-
+        //Задаёт значение всех характеристик
         curYellowFruitsCollect = 0;
         curBLueFruitsCollect = 0;
         curRedFruitsCollect = 0;
@@ -50,6 +50,8 @@ public class Player : Creature
         startMaxBullet += PlayerPrefs.GetInt("addMaxBullet");
         startCurStamina += PlayerPrefs.GetFloat("addMaxStamina");
         startStaminaRegeneration += PlayerPrefs.GetFloat("addStaminaRegeneration" );
+
+        startCurBullet = startMaxBullet;
 
         addMaxStamina = 0;
         addCurStamina = 0;
@@ -62,12 +64,14 @@ public class Player : Creature
 
     override protected void Death()
     {
+        //Перезапускает сцену при смерти
         Consumable.onGetEffect -= ChangeAdd;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Shot()
     {
+        //Выстрел в  ближайшего противника
         if (curBullet > 0)
         {
             float min = 1000;
@@ -85,7 +89,6 @@ public class Player : Creature
                 var bullet = Instantiate(bulletPrefab, transform.GetChild(0).position, Quaternion.identity);
                 bullet.GetComponent<Projectile>().SetTarget(target);
                 curBullet -= 1;
-                //shooter.Rotate(target.position);
                 onShot.Invoke();
             }
         }
@@ -93,13 +96,15 @@ public class Player : Creature
 
     public void Fruits()
     {
-            PlayerPrefs.SetInt("redFruit", curRedFruitsCollect);
-            PlayerPrefs.SetInt("yellowFruit", curYellowFruitsCollect);
-            PlayerPrefs.SetInt("blueFruit", curBLueFruitsCollect);
+        //Сохраняет все собранные фрукты
+            PlayerPrefs.SetInt("redFruit", PlayerPrefs.GetInt("redFruit") +curRedFruitsCollect);
+            PlayerPrefs.SetInt("yellowFruit", PlayerPrefs.GetInt("yellowFruit")+curYellowFruitsCollect);
+            PlayerPrefs.SetInt("blueFruit", PlayerPrefs.GetInt("blueFruit") +curBLueFruitsCollect);
     }
 
     private void ChangeAdd()
     {
+        //Фиксирует временное изменение характеристик 
         maxStamina = startMaxStamina + addMaxStamina;
         curStamina = startCurStamina + addCurStamina;
         staminaRegeneration = startStaminaRegeneration + addStaminaRegeneration;

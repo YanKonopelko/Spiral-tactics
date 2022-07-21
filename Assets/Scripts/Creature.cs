@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+//Абстрактный класс, содержащий общие элементы всех живых существ
 public abstract class Creature : MonoBehaviour
 {
     protected int healthPoint = 5;

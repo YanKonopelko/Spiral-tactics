@@ -11,7 +11,7 @@ public abstract class Enemy : Creature
     protected bool isAttack = false;
     protected float attackSpeed = 1;
     protected float attackDistance = 20;
-    protected float movementSpeed = 25;
+    protected float movementSpeed = 18;
 
     private void Start()
     {
