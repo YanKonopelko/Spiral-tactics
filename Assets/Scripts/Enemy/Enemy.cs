@@ -11,13 +11,14 @@ public abstract class Enemy : Creature
     protected bool isAttack = false;
     protected float attackSpeed = 1;
     protected float attackDistance = 20;
-    protected float movementSpeed = 18;
+    protected float movementSpeed = 9.5f;
 
     private void Start()
     {
         //Устонавилвает целью игрока в ассете, отвечающем за передвижение 
         GetComponent<AIPath>().target = player;
-        GetComponent<AIPath>().speed = movementSpeed;
+        GetComponent<AIPath>().maxSpeed = movementSpeed;
+        StartCoroutine(isFar());
     }
     
 
@@ -49,5 +50,17 @@ public abstract class Enemy : Creature
             isAttack = true;
             StartCoroutine(Attack(collision.gameObject.GetComponent<Player>()));
         }
+    }
+
+    private IEnumerator isFar()
+    {
+        yield return new WaitForSeconds(3);
+
+        if (Vector3.Distance(transform.position, player.position) > 100)
+        {
+            Destroy(gameObject);
+        }
+         
+        StartCoroutine(isFar());
     }
 }

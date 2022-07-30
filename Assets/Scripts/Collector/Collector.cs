@@ -6,6 +6,7 @@ public class Collector : MonoBehaviour
 {
     // Пустой объект за которым следует собиратель
     [SerializeField] private Transform target ;
+    [SerializeField] private Transform player;
 
     public bool isEmpty;
 
@@ -21,12 +22,21 @@ public class Collector : MonoBehaviour
 
     private void Start()
     {
+        target = Instantiate(new GameObject(),transform.position,Quaternion.identity).transform;
+        target.name = "CollectorTarget";
+
         collectTime += PlayerPrefs.GetFloat("collAddCollectTime");
+
         InputManager.onClick += SetTarget;
         GetComponent<AIPath>().target = target;
+        player = GameObject.FindWithTag("Player").transform;
+
+        StartCoroutine(isFar());
+
     }
     public void SetTarget(Vector3 _target)
     {
+        //проверка на включение,включение
         _target.y = transform.position.y;
         target.position = _target;
     }
@@ -47,7 +57,6 @@ public class Collector : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // Когда косается игрока отдаёт ему подобранный предмет
         if (collision.gameObject.CompareTag("Player") && isCollect)
         {
             collected.transform.GetChild(0).GetComponent<Consumable>().GetEffect(collision.gameObject.GetComponent<Player>());
@@ -63,10 +72,25 @@ public class Collector : MonoBehaviour
 
     public void SetCollected( GameObject coll)
     {
-
+        //автоматически идти к игроку
         isCollect = true;
         coll.transform.position = collected.transform.position;
         coll.transform.parent = collected.transform;
     }
+    private IEnumerator isFar()
+    {
+        yield return new WaitForSeconds(3);
 
+        if (Vector3.Distance(transform.position, player.position) > 200)
+        {
+            var pos = player.position;
+            pos.y = 5;
+            pos.x -= 20;
+            pos.x += 10;
+            transform.position = pos;
+            SetTarget(pos);
+        }
+
+        StartCoroutine(isFar());
+    }
 }

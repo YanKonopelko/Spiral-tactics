@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
@@ -13,7 +11,7 @@ public class MusicManager : MonoBehaviour
     public AudioClip mainMenuMusic;
     public AudioClip gameplayMusic;
 
-    public static float volume = 0.1f;
+    public static float volume = 0.4f;
     public float changeSpeed = 0.5f; // время смены музыки, в секундах
 
     private IEnumerator music_ienum;
@@ -21,7 +19,7 @@ public class MusicManager : MonoBehaviour
     public static MusicManager instance;
     private AudioClip currentlyPlaying;
 
-    private void Start()
+    private void Awake()
     {
         volume = (PlayerPrefs.HasKey("MUSIC_VOLUME")) ? PlayerPrefs.GetFloat("MUSIC_VOLUME") : volume;
 

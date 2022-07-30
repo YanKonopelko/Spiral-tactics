@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour
 {
     protected Transform target;
-    protected float  speed = 10;
+    protected float  speed = 20;
     protected int damage = 1;
 
     private void OnTriggerEnter(Collider other)

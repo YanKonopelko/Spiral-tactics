@@ -101,8 +101,8 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnSomebody()
 {
     //Периодически спавнит одного из 3-х врагов
-    yield return new WaitForSeconds(Random.Range(3, 6));
-    if (transform.transform.childCount < 7)
+    yield return new WaitForSeconds(Random.Range(2, 4));
+    if (transform.transform.childCount < 8)
     {
         var a = Random.Range(0, 3);
         switch (a)

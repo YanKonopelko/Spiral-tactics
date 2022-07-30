@@ -1,0 +1,95 @@
+{
+  "items": [
+
+    {
+      "key": "StartMenu_Start",
+      "value": "Start"
+
+    },
+    {
+
+      "key": "StartMenu_Upgrade",
+      "value": "Upgrade"
+
+    },
+    {
+
+      "key": "StartMenu_Settings",
+      "value": "Settings"
+
+    },
+    {
+
+      "key": "StartMenu_Wise_Book",
+      "value": "Wise book"
+
+    },
+    {
+
+      "key": "StartMenu_Exit",
+      "value": "Exit"
+
+    },
+    {
+
+      "key": "Options_Back",
+      "value": "Back"
+
+    },
+    {
+
+      "key": "Options_Sounds",
+      "value": "Sounds"
+
+    },
+    {
+
+      "key": "Options_Music",
+      "value": "Music"
+
+    },
+    {
+
+      "key": "UpgradeScene_Back",
+      "value": "Back"
+
+    },
+    {
+
+      "key": "UpgradeScene_Upgrade_1",
+      "value": "Start ammo quantity"
+
+    },
+    {
+
+      "key": "UpgradeScene_Upgrade_2",
+      "value": "Stamina regeneration speed"
+
+    },
+    {
+
+      "key": "UpgradeScene_Upgrade_3",
+      "value": "Player collection time"
+
+    },
+    {
+
+      "key": "UpgradeScene_Upgrade_4",
+      "value": "Max stamina quantity"
+
+    },
+    {
+
+      "key": "UpgradeScene_Upgrade_5",
+      "value": "Collector collection time"
+
+    },
+    {
+
+      "key": "UpgradeScene_Upgrade_6",
+      "value": "Random upgrade"
+
+    }
+
+  ]
+}

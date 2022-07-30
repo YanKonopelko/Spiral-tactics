@@ -9,7 +9,7 @@ public class Player : Creature
 
     private float startMaxStamina = 30;
     private float startCurStamina = 30;
-    private float startStaminaRegeneration = 2;
+    private float startStaminaRegeneration = 2.9f;
 
     public static float addMaxStamina = 0;
     public static float addCurStamina = 0;
@@ -106,10 +106,10 @@ public class Player : Creature
     {
         //‘иксирует временное изменение характеристик 
         maxStamina = startMaxStamina + addMaxStamina;
-        curStamina = startCurStamina + addCurStamina;
+        curStamina = curStamina + addCurStamina;
         staminaRegeneration = startStaminaRegeneration + addStaminaRegeneration;
         maxBullet = startMaxBullet + addMaxBullet;
-        curBullet = startCurBullet + addCurBullet;
+        curBullet += addCurBullet;
         collectTime = startCollectTime + addCollectTime;
     }
 

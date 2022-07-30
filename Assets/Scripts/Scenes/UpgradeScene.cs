@@ -6,8 +6,15 @@ public class UpgradeScene : MonoBehaviour
     FruitManager manager;
     [SerializeField] private TextMeshProUGUI text;
 
+    [SerializeField] private TextMeshProUGUI[] texts;
+    [SerializeField] private string[] keys;
+
     private void Start()
     {
+        for (int i = 0; i < texts.Length; i++)
+        {
+            texts[i].text = LocalizationManager.instance.GetLocalizedValue(keys[i]);
+        }
         manager = GetComponent<FruitManager>();
     }
 

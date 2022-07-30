@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         Player.onShot += BulletChange;
+        Consumable.onGetEffect += BulletChange;
         PlayerMovement.onStaminaEnd += ChangeMoveState;
         bulletText.text = player.curBullet.ToString();
     }

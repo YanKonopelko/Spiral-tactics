@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 startPos;
 
+    private int finishDistance = 1000;
 
     private void Start()
     {
@@ -34,10 +35,14 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (dir != new Vector3(0, 0, 0) && isStay == false && player.curStamina > 0)
+        if (isStay == false && dir != new Vector3(0, 0, 0) )
         {
-            rigidBody.MovePosition(transform.position + dir * movementSpeed);
-            player.curStamina -= 5 * Time.deltaTime;
+            if(player.curStamina > 5 * Time.deltaTime) {
+                rigidBody.MovePosition(transform.position + dir * movementSpeed);
+                player.curStamina -= 5 * Time.deltaTime;
+            }
+            else
+                onStaminaEnd.Invoke();
         }
         else
         {
@@ -58,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         //Проверка на пройденное расстояние
-        if (Vector3.Distance(transform.position, startPos) > 1000)
+        if (Vector3.Distance(transform.position, startPos) > finishDistance)
         {
             //Сохранение прогресса и вход в меню
             player.Fruits();
