@@ -8,16 +8,16 @@ using System.Collections.Generic;
     public Dictionary<string, int> fruits = new Dictionary<string,int>();
     private void Start()
     {    
-        fruits.Add("blue", 0);
-        fruits.Add("red", 0);
-        fruits.Add("yellow", 0);
+        fruits.Add("blueFruit", 0);
+        fruits.Add("redFruit", 0);
+        fruits.Add("greenFruit", 0);
 
-        if (PlayerPrefs.HasKey("yellowFruit"))
-            fruits["yellow"] = PlayerPrefs.GetInt("yellowFruit");
+        if (PlayerPrefs.HasKey("greenFruit"))
+            fruits["greenFruit"] = PlayerPrefs.GetInt("greenFruit");
         if (PlayerPrefs.HasKey("redFruit"))
-            fruits["red"] = PlayerPrefs.GetInt("redFruit");
+            fruits["redFruit"] = PlayerPrefs.GetInt("redFruit");
         if (PlayerPrefs.HasKey("blueFruit"))
-            fruits["blue"] = PlayerPrefs.GetInt("blueFruit");
+            fruits["blueFruit"] = PlayerPrefs.GetInt("blueFruit");
     }
      public bool HaveFruits(string f_1,string f_2)
     {
@@ -38,6 +38,8 @@ using System.Collections.Generic;
             //Удаляет указанные фрукты, если они есть
             fruits[f_1] -= 1;
             fruits[f_2] -= 1;
+            PlayerPrefs.SetInt(f_1,PlayerPrefs.GetInt(f_1) -1);
+            PlayerPrefs.SetInt(f_2, PlayerPrefs.GetInt(f_2) - 1);
             return true;
         }
         else
