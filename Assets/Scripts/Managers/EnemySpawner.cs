@@ -106,13 +106,13 @@ public class EnemySpawner : MonoBehaviour
     {
         var a = Random.Range(0, 3);
         switch (a)
-        {
+       {
             case 0:
                SpawnWolf();
                 break;
             case 1:
                SpawnElemental();
-                break;
+               break;
             case 2:
                 SpawnWizard();
                 break;

@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 7562076199679105401}
   - component: {fileID: 5632134800528570202}
   - component: {fileID: 3740799352165453386}
-  - component: {fileID: 6723369385788788912}
+  - component: {fileID: 7933545488448464710}
   m_Layer: 7
   m_Name: "\u0432\u043E\u043B\u043A"
   m_TagString: Enemy
@@ -574,7 +574,7 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
---- !u!95 &6723369385788788912
+--- !u!95 &7933545488448464710
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -584,7 +584,7 @@ Animator:
   m_GameObject: {fileID: 6636101853216231186}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce8f62413c460044ca2b05df98373952, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

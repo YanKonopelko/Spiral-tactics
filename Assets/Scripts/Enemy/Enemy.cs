@@ -13,6 +13,7 @@ public abstract class Enemy : Creature
     protected float attackDistance = 20;
     protected float movementSpeed = 9.5f;
 
+
     private void Start()
     {
         //Устонавилвает целью игрока в ассете, отвечающем за передвижение 
@@ -32,6 +33,7 @@ public abstract class Enemy : Creature
         yield return new WaitForSeconds(attackSpeed);
         isAttack = false;
         player.GetDamage(1);
+        anim.SetBool("Attack", false);
     }
 
     protected void OnCollisionExit(Collision collision)
@@ -48,6 +50,7 @@ public abstract class Enemy : Creature
         {
             GetComponent<AIPath>().canMove = false;
             isAttack = true;
+            anim.SetBool("Attack", true);
             StartCoroutine(Attack(collision.gameObject.GetComponent<Player>()));
         }
     }

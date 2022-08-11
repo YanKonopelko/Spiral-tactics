@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pausedPanel;
     private void Start()
     {
+        Time.timeScale = 1;
         Player.onShot += BulletChange;
         Consumable.onGetEffect += BulletChange;
         PlayerMovement.onStaminaEnd += ChangeMoveState;

@@ -9,6 +9,7 @@ public class Wizard : Enemy
 
     private void OnEnable()
     {
+        anim = transform.GetChild(0).GetComponent<Animator>();
         StartCoroutine(SpawnElemental());        
     }
 
@@ -17,6 +18,7 @@ public class Wizard : Enemy
         //Маг при атаке спавнит магический шар, летящий в игрока
         yield return new WaitForSeconds(1.5f);
         isAttack = false;
+        anim.SetBool("Attack", false);
         var ball = Instantiate(magickBall,transform.position,Quaternion.identity);
         ball.GetComponent<Projectile>().SetTarget(player.gameObject.transform);
     }
@@ -43,6 +45,7 @@ public class Wizard : Enemy
         if (!isAttack && other.CompareTag("Player"))
         {
             GetComponent<AIPath>().canMove = false;
+            anim.SetBool("Attack", true);
             isAttack = true;
             StartCoroutine(Attack(other.GetComponent<Player>()));
         }

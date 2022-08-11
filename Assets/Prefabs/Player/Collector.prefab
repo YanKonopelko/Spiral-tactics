@@ -177,7 +177,6 @@ GameObject:
   - component: {fileID: 5552833844724253980}
   - component: {fileID: 5552833844724253975}
   - component: {fileID: 5552833844724253974}
-  - component: {fileID: -3683775173598747770}
   m_Layer: 0
   m_Name: Collector
   m_TagString: Collector
@@ -249,6 +248,7 @@ MonoBehaviour:
   collectTime: 1.5
   isCollect: 0
   collected: {fileID: 5552833845272161364}
+  anim: {fileID: 0}
 --- !u!114 &5552833844724253975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,26 +313,6 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
---- !u!95 &-3683775173598747770
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5552833844724253983}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5552833844783795315
 GameObject:
   m_ObjectHideFlags: 0

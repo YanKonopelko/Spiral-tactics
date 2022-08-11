@@ -111,25 +111,24 @@
     {
 
       "key": "WiseBook_Body_Rules",
-      "value": "The cart is controlled using the bottom panel, I think you'll figure it out ;) In order for the second character to run, just click on the point to which he should come Along the way, you need to collect various items to replenish your stamina and ammunition, maybe you will find something else useful, also collect round pieces on the stumps - these are fruits, they will not help you in the current race, but will allow you to make improvements that will strengthen you forever "
+      "value": "The cart is controlled using the bottom panel, I think you'll figure it out ;) \nIn order for the second character to run, just click on the point to which he should come \nAlong the way, you need to collect various items to replenish your stamina and ammunition, maybe you will find something else useful \nAlso collect round pieces on the stumps - these are fruits, they will not help you in the current race, but will allow you to make improvements that will strengthen you forever "
 
     },
     {
 
       "key": "WiseBook_Body_Story",
-      "value": "“ри существа украли у волшебников магические предметы. ћаги в бешенстве и они начинают погоню. √еро€м нужно убежать в безопасное место, где они смогут укрытьс€. Ќо существует ли безопасное место?   аждый раз перед смертью срабатывает один из украденных магических шаров, который телепортирует персонажей в начальную точку забега, тем самым предотвраща€ момент гибели"
-
+      "value": "Three creatures stole magic items from wizards. The Magicians are furious and they start chasing. The heroes need to escape to a safe place where they can hide. But is there a safe place? \nEach time before death, one of the stolen magic balls is triggered, which teleports the characters to the starting point of the race, thereby preventing the moment of death"
     },
     {
 
       "key": "WiseBook_Header_Story",
-      "value": "ѕредыстори€"
+      "value": "Story"
 
     },
     {
 
       "key": "WiseBook_Header_???",
-      "value": "«наешь ответ?"
+      "value": "Know the answer??"
 
     }
 

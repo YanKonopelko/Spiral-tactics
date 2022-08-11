@@ -26,7 +26,10 @@ public class Player : Creature
 
     [SerializeField] private GameObject spawner;
     [SerializeField] private GameObject bulletPrefab;
-    public static Action onShot;
+
+    public static Action onShot; 
+    public static Action<Vector3> onShot_Vector3;
+
 
     public float collectTime ;
     public static float addCollectTime = 0;
@@ -36,14 +39,14 @@ public class Player : Creature
     [SerializeField] private Shooter shooter;
 
 
-    static public int curYellowFruitsCollect = 0;
+    static public int curGreenFruitsCollect = 0;
     static public int curBLueFruitsCollect = 0;
     static public int curRedFruitsCollect = 0;
 
 
     private void  Start() {
         //Задаёт значение всех характеристик
-        curYellowFruitsCollect = 0;
+        curGreenFruitsCollect = 0;
         curBLueFruitsCollect = 0;
         curRedFruitsCollect = 0;
         startCollectTime += PlayerPrefs.GetFloat("addCollectTime");
@@ -90,6 +93,7 @@ public class Player : Creature
                 bullet.GetComponent<Projectile>().SetTarget(target);
                 curBullet -= 1;
                 onShot.Invoke();
+                onShot_Vector3.Invoke(target.position);
             }
         }
     }
@@ -98,7 +102,7 @@ public class Player : Creature
     {
         //Сохраняет все собранные фрукты
             PlayerPrefs.SetInt("redFruit", PlayerPrefs.GetInt("redFruit") +curRedFruitsCollect);
-            PlayerPrefs.SetInt("yellowFruit", PlayerPrefs.GetInt("yellowFruit")+curYellowFruitsCollect);
+            PlayerPrefs.SetInt("greenFruit", PlayerPrefs.GetInt("greenFruit") +curGreenFruitsCollect);
             PlayerPrefs.SetInt("blueFruit", PlayerPrefs.GetInt("blueFruit") +curBLueFruitsCollect);
     }
 
